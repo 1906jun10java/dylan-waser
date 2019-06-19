@@ -1,5 +1,7 @@
 package com.revature.arrays;
 
+import java.util.Arrays;
+
 public class ArraysDemo {
 
 	public static void main(String[] args) {
@@ -8,7 +10,7 @@ public class ArraysDemo {
 		
 		//really creating an array of arrays
 		int [][] arr2 = {{1,2,3}, {4,5,6}};
-		int [][] arr3 = {{6,5,4}, {3,2,1}};
+		int [] arr4 = {7, 54, 32, 86, 5, 12};
 		
 		for(int x = 0; x < arr2.length; x++) //iterating over rows (x)
 		{
@@ -34,6 +36,15 @@ public class ArraysDemo {
 				System.out.println(arrSorted[x][y]);
 			}
 		}
+		
+	/*
+		System.out.println("Print Arr4 sorted.");
+		int[] sortedBubbleArr = bubbleSort(arr4);
+		for(int x = 0; x < sortedBubbleArr.length; x++)
+		{
+			System.out.println(sortedBubbleArr[x]);
+		}
+	*/
 	}
 	/*
 	 * return largest int in provided array
@@ -79,18 +90,41 @@ public class ArraysDemo {
 	 */
 	public static int[][] sortArray(int[][] arr)
 	{
-		int current = arr[0][0];
-		for(int x = 0; x < arr.length; x++)
+		int length = arr.length;
+		
+		for(int x = arr.length; x < arr.length; x++)
 		{
 			for(int y = 0; y < arr[x].length; y++)
 			{
-				if(arr[x][y] < current)
+				for(int z = 0; z < arr[x].length - x; z++)
 				{
-					current = arr[x][y];
+					if(arr[x][y] > arr[x][y])
+					{
+						int storeNumber = arr[x][y];
+						arr[x][y] = arr[x][arr.length-1-y];
+						arr[x][y] = storeNumber;
+					}
 				}
 			}
 		}
-		
+		return arr;
+	}
+	
+	
+	public static int[] bubbleSort(int[] arr)
+	{
+		for(int x = 0; x < arr.length; x++)
+		{
+			for(int y = 0; y < arr.length-1; y++) //Improvement #1: could change to arr.length-1-x, stop checking when already bubbled values are reached
+			{									  //getting rid of redundant calculations
+				if(arr[x] < arr[y])
+				{								  //Improvement #2: keep track of whether additional passes are necessary
+					int store = arr[x];
+					arr[x] = arr[y];
+					arr[y] = store;
+				}
+			}
+		}
 		return arr;
 	}
 
