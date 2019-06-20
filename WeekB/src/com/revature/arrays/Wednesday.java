@@ -18,7 +18,7 @@ public class Wednesday {
 		
 		String str = "Things";
 		int n = str.length()-1; 
-		System.out.println(recursiveReverse(str, n));
+		System.out.println(recursiveReverse(str));
 	}
 
 	public static String reverse(String str) //write a method to reverse a string
@@ -69,16 +69,14 @@ public class Wednesday {
 	}
 	
 	//write a recursiveReverse method
-	public static String recursiveReverse(String str, int n)
+	public static String recursiveReverse(String str)
 	{
-		String rts = "";
-		
-		rts+= str.charAt(n);
-		if(n >= 0)
+		int length = str.length();
+		if(str.length() == 1)
 		{
-			recursiveReverse(rts, n);
+			return str;
 		}
-		return rts;
+		return str + recursiveReverse(str);
 	}
 	
 }
