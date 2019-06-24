@@ -72,7 +72,7 @@ public class MyLinkedList<T> {
 		Node<T> nextNode = currentNode.getNextNode();
 		
 		//if first node matches the key, move head to next node
-		if(currentNode != null && currentNode.getData().equals(key))
+		if(currentNode != null && currentNode.getData() != null && currentNode.getData().equals(key))
 		{
 			this.head = nextNode;
 			return true;
@@ -99,6 +99,63 @@ public class MyLinkedList<T> {
 			}
 		}
 		
+		return false;
+	}
+	
+	//method for removing duplicates in the list
+	public boolean removeDuplicate()
+	{		
+		//create a reference to current node
+		Node<T> currentNode = this.head;
+		Node<T> tempNode;
+		T currentValue = null;
+		
+		//do we have a list in the first place?
+		if(this.head != null)
+		{
+			currentValue = currentNode.getData();
+			System.out.println("at beginning of list, initial value = " + currentValue);
+			
+			do
+			{
+				//things
+				System.out.println("beginning outer loop iteration");
+				tempNode = currentNode; //have "runner" start in the same spot as the current node
+				//dont need to re-check earlier nodes in the list
+				
+				while(tempNode != null && tempNode.getNextNode() != null)
+				{
+					//check for matches
+					T nextValue = tempNode.getNextNode().getData();
+					System.out.println("Comparing values( " + currentValue + ", " + nextValue +
+										")");
+					if(currentValue.equals(nextValue))
+					{
+						System.out.println("removing first instance of the value: " + currentValue);
+						this.removeByKey(currentValue);
+					}
+					System.out.println("moving tempNode to next node");
+					tempNode = tempNode.getNextNode();
+					
+				}
+				System.out.println("Moving to currentNode to the next node");
+				if(currentNode.getNextNode() != null)
+				{
+					System.out.println("no more duplicates of " + currentValue + " left" + "\n" +
+										"++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+					this.printList();
+					System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+					currentValue = currentNode.getNextNode().getData();
+					currentNode = currentNode.getNextNode();
+				}
+				
+			}while(currentValue != null && currentNode.getNextNode() != null);
+			//exit iteration if current node's value is null OR there is no nest node
+			//note: a refinement would be to scrub out or skip all nodes with null valeus
+			//instead of quitting as soon as we fine one
+		}
+		
+				
 		return false;
 	}
 	
