@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 
 import com.revature.beans.Car;
+import com.revature.beans.TransmissionType;
 
 public class FunWithReflection {
 
@@ -18,7 +19,7 @@ public class FunWithReflection {
 		
 		//declared type is Object
 		//actual type is Car
-		Object o = new Car(2003, "Lamborghini", "Gallardo", 0.0);
+		Object o = new Car(2003, "Lamborghini", "Gallardo", 0.0, TransmissionType.AUTOMATIC);
 		System.out.println("Is " + o + " a car? " + isItACar(o));
 		
 		Object o2 = new Object();

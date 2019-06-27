@@ -7,16 +7,17 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.revature.beans.Car;
+import com.revature.beans.TransmissionType;
 
 public class FunWithComparisons {
 
 	public static void main(String[] args) {
 		List<Car> carList = new ArrayList<>();
-		carList.add(new Car(1997, "Mustang", "Mustang", 0.0));
-		carList.add(new Car(1999, "Nissan", "GTR", 0.0));
-		carList.add(new Car(1993, "Porsche", "911 Turbo S", 0.0));
-		carList.add(new Car(2014, "Ford", "Taurus", 0.0));
-		carList.add(new Car(2035, "Tesla", "Spaceship", 100.0));
+		carList.add(new Car(1997, "Mustang", "Mustang", 0.0, TransmissionType.AUTOMATIC));
+		carList.add(new Car(1999, "Nissan", "GTR", 0.0, TransmissionType.MANUAL));
+		carList.add(new Car(1993, "Porsche", "911 Turbo S", 0.0, TransmissionType.AUTOMATIC));
+		carList.add(new Car(2014, "Ford", "Taurus", 0.0, TransmissionType.MANUAL));
+		carList.add(new Car(2035, "Tesla", "Spaceship", 100.0, TransmissionType.AUTOMATIC));
 		System.out.println("Cars before sort:");
 		printCars(carList);
 		sortWithComparable(carList);
