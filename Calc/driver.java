@@ -34,7 +34,7 @@ public class driver {
 			{
 				
 			}
-		}while(!isValid(inputA) && !isValid(inputB));
+		}while(!isValid(inputA) || !isValid(inputB));
 		
 		Calculator c = new Calculator();
 
