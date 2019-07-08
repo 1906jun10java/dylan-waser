@@ -21,7 +21,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 		try 
 		{
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM CAR");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM DEPARTMENT");
 			Department d = null;
 			while(rs.next())
 			{

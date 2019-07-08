@@ -23,7 +23,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		try 
 		{
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM CAR");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM EMPLOYEE");
 			Employee e = null;
 			while(rs.next())
 			{
