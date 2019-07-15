@@ -1,9 +1,9 @@
 //Part 1
 //this is for BookShelf part
-let bookShelf = [{title:"Warriors", author:"Erin Hunter", genre:"Fantasy Fiction", coverImage:"Picture"},
-                    {title:"The Reckoning", author:"John Grisham", genre:"Horror", coverImage:"Pciture"}];
+//let bookShelf = [{title:"Warriors", author:"Erin Hunter", genre:"Fantasy Fiction", coverImage:"Picture"},
+//                    {title:"The Reckoning", author:"John Grisham", genre:"Horror", coverImage:"Pciture"}];
 
-document.getElementById("insert").innerHTML = bookShelf[0].title;
+//document.getElementById("insert").innerHTML = bookShelf[0].title;
 
 //Part 2
 window.onload = function(){
