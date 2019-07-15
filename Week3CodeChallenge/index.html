@@ -13,9 +13,26 @@
         <button type="button" id="card">Show me cards</button>
     </div>
     <div>
-        <h3 id="name"></h3>
-        <h3 id="cmc"></h3>
-        <h3 id="colors"></h3>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Cover Image</th>
+            </tr>
+            <tr> <!-- figure out some dynamic bookShelf with forEach-->
+                <td id="insert">Click me</td> <!-- inserts bookShelf[0].title from scripts line 6-->
+                <td><script>bookShelf[0].author</script></td>
+                <td><script>bookShelf[0].genre</script></td>
+                <td><script>bookShelf[0].coverImage</script></td>
+            </tr>
+            <tr>
+                <td><script>bookShelf[1].title</script></td>
+                <td><script>bookShelf[1].author</script></td>
+                <td><script>bookShelf[1].genre</script></td>
+                <td><script>bookShelf[1].coverImage</script></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
