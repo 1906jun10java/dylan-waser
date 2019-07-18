@@ -1,0 +1,6 @@
+ArrayList<Author> authors = new ArrayList<Author>();
+authors.add(new Author(1, "Ricardo", "Smith"));
+authors.add(new Author(2, "Ben", "Malmberg));
+authors.add(new Author(3, "Hector", "Lugo"));
+authors.add(new Author(4, "Tobias", "Young"));
+authors.add(new Author(5, "Dylan", "Waser"));

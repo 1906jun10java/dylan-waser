@@ -6,10 +6,16 @@
 //document.getElementById("insert").innerHTML = bookShelf[0].title;
 
 //Part 2
+let bookShelf = [{title:"Warriors", author:"Erin Hunter", genre:"Fantasy Fiction", coverImage:"Picture"},
+                   {title:"The Reckoning", author:"John Grisham", genre:"Horror", coverImage:"Pciture"}];
+
 window.onload = function(){
     document.getElementById("card").onclick = function() {
         sendAjaxGet('https://api.magicthegathering.io/v1/cards', showCard);
     };
+    
+    document.getElementById("title").innerHTML = bookShelf[0].title;
+    document.getElementById("author").innerHTML = bookShelf[0].author;
 }
 
 function sendAjaxGet(url, func){
