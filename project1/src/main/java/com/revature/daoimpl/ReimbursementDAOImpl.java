@@ -16,16 +16,17 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
-	public void createReimbursement(int EMPLOYEEID, int AMOUNT, String REASON, String PHOTO)
+	public void createReimbursement(int EMPLOYEEID, int AMOUNT, String REASON, String PHOTO, int RESOLVED)
 			throws SQLException {
 		Connection conn = cf.getConnection();
 		try {
-			String sql = "{ call INSERTREM(?, ?, ?, ?)";
+			String sql = "{ call INSERTREM(?, ?, ?, ?, ?)";
 			CallableStatement call = conn.prepareCall(sql);
 			call.setInt(1, EMPLOYEEID);
 			call.setInt(2, AMOUNT);
 			call.setString(3, REASON);
 			call.setString(4, PHOTO);
+			call.setInt(5, RESOLVED);
 			call.execute();
 		}
 		catch(SQLException sqle)
@@ -47,7 +48,8 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 									rs.getInt(2),
 									rs.getInt(3),
 									rs.getString(4),
-									rs.getString(5));
+									rs.getString(5),
+									rs.getInt(6));
 			reimList.add(r);
 		}
 		return reimList;
@@ -66,6 +68,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 		call.setInt(2, r.getAmount());
 		call.setString(3, r.getReason());
 		call.setString(4, r.getPhoto());
+		call.setInt(5, r.getResolvedBit());
 		call.execute();
 		
 	}

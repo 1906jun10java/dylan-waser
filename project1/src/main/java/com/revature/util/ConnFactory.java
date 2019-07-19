@@ -3,6 +3,7 @@ package com.revature.util;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -25,8 +26,10 @@ public class ConnFactory {
 		Connection conn =null;
 		Properties prop = new Properties();
 		
-		try {
-			prop.load(new FileReader("database.properties"));
+		try
+		{
+			InputStream stream = this.getClass().getResourceAsStream("/database.properties");
+			prop.load(stream);
 			Class.forName(prop.getProperty("driver"));
 			conn= DriverManager.getConnection(
 					prop.getProperty("url"), 

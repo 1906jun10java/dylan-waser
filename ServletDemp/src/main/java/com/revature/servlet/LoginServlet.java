@@ -3,14 +3,17 @@ package com.revature.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.revature.beans.Credentials;
 import com.revature.beans.User;
 import com.revature.service.AuthenticationService;
 
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
 	private AuthenticationService authService = new AuthenticationService();
@@ -36,15 +39,33 @@ public class LoginServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//check whether a session already exists, and create one if not
+		//overloaded version takes a boolean parameter, if false returns null when no session exists for the incoming request
+		HttpSession session = req.getSession();
+		
+		
 		// grab credentials from request
 		Credentials creds = new Credentials(req.getParameter("username"), req.getParameter("password"));
 		User u = authService.authenticateUser(creds);
 		if (u != null) {
-			//resp.getWriter().write("welcome, "+u.getFirstname()+" "+u.getLastname());
+			//set user information as session attributes (not request attributes)
+			session.setAttribute("userId", u.getId());
+			session.setAttribute("username", u.getUsername());
+			session.setAttribute("firstname", u.getFirstname());
+			session.setAttribute("lastname", u.getLastname());
+			session.setAttribute("email", u.getEmail());
+			session.setAttribute("problem", null);
+			
+			
+			//resp.getWriter().write("welcome, "+u.getFirstname()+ " " +u.getLastname());
 			//redirect user to their profile page if authenticated
 			resp.sendRedirect("profile");
 			
 		} else {
+			//what if the creds are wrong?
+			
+			session.setAttribute("problem", "invalid credntials");
+			
 			//Option 1
 			//resp.getWriter().write("invalid credentials");
 			//print sassy message if wrong

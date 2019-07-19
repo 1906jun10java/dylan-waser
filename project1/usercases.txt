@@ -1,0 +1,56 @@
+EMPLOYEE USER CASES
+-An Employee can login - Login.html
+-An Employee can view the Employee Homepage - index.html - employeeIndex.html?
+-An Employee can logout - option on index.html(sends back to Login.html)
+-An Employee can submit a reimbursement request - option on index.html to create a reimbursement
+-An Employee can upload an image of his/her receipt as part of the reimbursement request - atleast accept a string
+-An Employee can view their pending reimbursement requests - readAll reimbursements
+-An Employee can view their resolved reimbursement requests - readAll reimbursements that have been resolved
+-An Employee can view their information - view their profile
+-An Employee can update their information - update their information page
+-An Employee receives an email when one of their reimbursement requests is resolved (optional)
+
+Note! Every Employee has a Manager. 
+The Managers are also Employees, with their own Managers, 
+so they should also be able to submit reimbursement requests and do all related actions, 
+but be able to operate as Managers as well. 
+
+-A Manager can login - Login.html
+-A Manager can view the Manager Homepage - index.html
+-A Manager can logout - option on index.html(sends back to Login.html) - manageIndex.html?
+-A Manager can approve/deny pending reimbursement requests from the employees they manage
+-A Manager can view all pending requests from the employees they manage
+-A Manager can view images of the receipts from all reimbursement requests
+-A Manager can view all resolved requests from all employees and see which manager resolved it
+-A Manager can view all Employees and their managers
+-A Manager can view reimbursement requests from a single Employee whom they manage
+
+-A Manager can register an Employee, which sends the Employee an email with their username and temp password (optional)
+-An Employee can reset their password (Optional - tied with above functional requirement)
+
+Follow Test-Driven Development and the DAO design pattern.
+
+Technologies:
+-Java 1.8
+-Servlets
+-JDBC
+-PL/SQL
+-HTML
+-CSS
+-Javascript - Vanilla only. Can use JQuery for the purposes of Bootstrap ONLY
+-Bootstrap
+-AJAX/Fetch
+-JUnit
+-log4j
+-Maven
+
+Environment:
+-Tomcat Server
+-Oracle 11g Database (Or whatever your RDS is) 
+-Eclipse/Spring Tools Suite
+-SQL Developer
+
+
+------------------------------------------------------------------------
+YOU CAN TELL IF A EMPLOYEE IS A MANAGER BY CHECKING IF THEIR EMPLOYEEID SHOWS UP IN
+ANY OTHER EMPLOYEES MANAGERID. IF THEIR EMPLOYEEID DOES NOT SHOW UP THAT MEANS THEY ARE NOT A MANAGER

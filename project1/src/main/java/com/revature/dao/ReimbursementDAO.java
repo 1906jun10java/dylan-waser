@@ -8,7 +8,7 @@ import com.revature.beans.Reimbursement;
 public interface ReimbursementDAO {
 
 	//create reimbursement
-	public abstract void createReimbursement(int EMPLOYEEID, int AMOUNT, String REASON, String PHOTO)
+	public abstract void createReimbursement(int EMPLOYEEID, int AMOUNT, String REASON, String PHOTO, int RESOLVED)
 		throws SQLException;
 	
 	//readAll reimbursement

@@ -1,3 +1,8 @@
-body{
-    background-color: orange
+@charset "UTF-8";
+
+.display{
+	background-color: orange;
+	text-align: center;
+	padding: 15rem;
+	margin: 15rem;
 }
