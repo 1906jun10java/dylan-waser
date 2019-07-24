@@ -18,6 +18,7 @@ public class SessionServlet extends HttpServlet{
 	//JSESSIONID
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("HIT FROM THE SESSIONSERVLET");
 		HttpSession session = req.getSession(false);
 		if(session != null && session.getAttribute("employeeID") != null) {
 			try
@@ -27,14 +28,15 @@ public class SessionServlet extends HttpServlet{
 				String lastname = session.getAttribute("lastname").toString();
 				String email = session.getAttribute("email").toString();
 				String username = session.getAttribute("username").toString();
-				String password = session.getAttribute("password").toString();
+				String password = session.getAttribute("passw0rd").toString();
 				int managerID = Integer.parseInt(session.getAttribute("managerID").toString());
 				Employee e = new Employee(employeeID, firstname, lastname, email, username, password, managerID);
 				resp.getWriter().write((new ObjectMapper()).writeValueAsString(e));
 			}
 			catch(Exception e)
 			{
-				
+				System.out.println("EXCEPTION BEING THROWN");
+				e.printStackTrace();
 			}
 		}
 		else

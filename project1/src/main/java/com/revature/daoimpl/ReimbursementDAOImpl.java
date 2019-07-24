@@ -16,24 +16,25 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
-	public void createReimbursement(int EMPLOYEEID, int AMOUNT, String REASON, String PHOTO, int RESOLVED)
+	public boolean createReimbursement(int EMPLOYEEID, double AMOUNT, String REASON, String PHOTO, int RESOLVED)
 			throws SQLException {
 		Connection conn = cf.getConnection();
 		try {
 			String sql = "{ call INSERTREM(?, ?, ?, ?, ?)";
 			CallableStatement call = conn.prepareCall(sql);
 			call.setInt(1, EMPLOYEEID);
-			call.setInt(2, AMOUNT);
+			call.setDouble(2, AMOUNT);
 			call.setString(3, REASON);
 			call.setString(4, PHOTO);
 			call.setInt(5, RESOLVED);
 			call.execute();
+			return true; //successfully created
 		}
 		catch(SQLException sqle)
 		{
 			System.out.println("Something went wrong during reimbursement creation.");
 		}
-		
+		return false; //not created		
 	}
 
 	public ArrayList<Reimbursement> readAllReimbursement() throws SQLException {
@@ -44,9 +45,8 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 		Reimbursement r = null;
 		while(rs.next())
 		{
-			r = new Reimbursement(rs.getInt(1),
-									rs.getInt(2),
-									rs.getInt(3),
+			r = new Reimbursement(rs.getInt(2),
+									rs.getDouble(3),
 									rs.getString(4),
 									rs.getString(5),
 									rs.getInt(6));
@@ -59,13 +59,33 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 		
 		return null;
 	}
+	
+	public ArrayList<Reimbursement> readReimbursementByEmpID(int employeeID) throws SQLException {
+		ArrayList<Reimbursement> reimListOfEmp = new ArrayList<Reimbursement>();
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM REIMBURSEMENT WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareCall(sql);
+		ps.setInt(1, employeeID);
+		ResultSet rs = ps.executeQuery();
+		Reimbursement r = null;
+		while(rs.next())
+		{
+			r = new Reimbursement(rs.getInt(2), //employeeID
+									rs.getDouble(3), //amount
+									rs.getString(4), //reason
+									rs.getString(5), //photo
+									rs.getInt(6)); //resolved
+			reimListOfEmp.add(r);
+		}
+		return reimListOfEmp;
+	}
 
 	public void updateReimbursement(Reimbursement r) throws SQLException {
 		Connection conn = cf.getConnection();
-		String sql = "{ call UPDATEREIM(?, ?, ?, ?, ?, ?_";
+		String sql = "{ call UPDATEREIM(?, ?, ?, ?, ?, ?";
 		CallableStatement call = conn.prepareCall(sql);
 		call.setInt(1, r.getEmployeeID());
-		call.setInt(2, r.getAmount());
+		call.setDouble(2, r.getAmount());
 		call.setString(3, r.getReason());
 		call.setString(4, r.getPhoto());
 		call.setInt(5, r.getResolvedBit());

@@ -3,14 +3,13 @@ package com.revature.beans;
 public class Reimbursement {
 	private int reimbursementID;
 	private int employeeID;
-	private int amount;
+	private double amount;
 	private String reason;
 	private String photo;
 	private boolean resolved;
 	
-	public Reimbursement(int reimbursementID, int employeeID, int amount, String reason, String photo, int resolvedBit) {
+	public Reimbursement(int employeeID, double amount, String reason, String photo, int resolvedBit) {
 		super();
-		this.reimbursementID = reimbursementID;
 		this.employeeID = employeeID;
 		this.amount = amount;
 		this.reason = reason;
@@ -42,11 +41,11 @@ public class Reimbursement {
 		this.employeeID = employeeID;
 	}
 
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 

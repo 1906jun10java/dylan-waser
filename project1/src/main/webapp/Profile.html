@@ -1,23 +1,79 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div class="display">
-		<h1>WELCOME</h1>
-	</div>
-	<div class="dispaly">
-		<br>
-		<p id="username"></p>
-		<br>
-		<p id="firstname"></p>
-		<br>
-		<p id="lastname"></p>
-		<br>
-		<p id="email"></p>
+    <head>
+    	<title>Employee Profile</title>
+    	<!-- Required meta tags -->
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<!-- Bootstrap CSS -->
+    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    	<link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+    	<script src="scripts/empProfile.js"></script>
+    </head>
+    <body>
+    	<div class="container">
+        	<h1 class="jumbotron" id="welcomeEmp" style="background-color: orange"></h1>
+        </div>
+
+		<!-- readEmp section -->
+		<div class="display">
+		        <button id="readEmpBut">Get My Profile</button>
+		        <div id ="readEmp">
+		        	<!-- table will be generated here
+		        		with current logged in users information -->
+		        </div>
+		        <br>
+		    
+			
+			<!--  view requests that the currently
+				logged in user has made -->
+			<h4>View your requests</h4>
+			<button id="empRequestsBut">View Requests</button>
+	        <div id ="empRequests">
+	        
+	        </div>
+	        <br>
 		
-	</div>
-</body>
+			<!--  make a new reimbursement for the
+				currently logged in user -->
+			<div>	
+		        <h4>Make a reimbursement request</h4>
+		        <form action="submitRequest" method="POST">
+		        	<br>
+		        	<label>Enter dollar amount: $</label>
+		            <input name ="amount" type="number" min="0.01" step="0.01"><br><br>
+		            
+		            <label>Enter brief reason for request:</label>
+		            <input name="reason" type="text"><br><br>
+		            
+		            <label>Enter receipt file name:</label>
+		            <input name="photo" type="text"><br><br>
+		            <button type="submit">Submit</button>
+		        </form>
+		        <br>
+		    </div>
+	        
+	        
+	        <div>
+	        	<h4>Update your user profile</h4>
+		        <form action="updateInfo" method="GET">
+		        	<br>
+		        	<label>Username:</label>
+		        	<input name="username" type="text"><br><br>
+		        	
+		        	<label>Password:</label>
+		        	<input name="password" type="password"><br><br>
+		        	
+		        	<label>Email:</label>
+		        	<input name="email" type ="text"><br><br>
+		        	<button type="submit" value="update info">Submit</button>
+		        </form>
+		        <br>
+		    </div>
+	        <br>
+	        <form action="logout" method="GET">
+	            <button type="submit" value="logout">Log Out</button>
+	        </form>
+	     </div>
+    </body>
 </html>

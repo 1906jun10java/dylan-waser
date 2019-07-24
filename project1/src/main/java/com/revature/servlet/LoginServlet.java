@@ -3,6 +3,7 @@ package com.revature.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,6 +30,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//check whether a session already exists, and create one if not
 		//overloaded version takes a boolean parameter, if false returns null when no session exists for the incoming request
+		System.out.println("HIT FROM THE LOGIN SERVLET");
 		HttpSession session = req.getSession();
 		
 		

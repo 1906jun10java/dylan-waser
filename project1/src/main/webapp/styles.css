@@ -3,6 +3,14 @@
 .display{
 	background-color: orange;
 	text-align: center;
-	padding: 15rem;
-	margin: 15rem;
+	padding: 5rem;
+	margin: 5rem;
+}
+
+div {
+	border:1px solid black;
+}
+
+table {
+	text-align: center;
 }
