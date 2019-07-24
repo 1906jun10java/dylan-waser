@@ -35,8 +35,7 @@ public class SessionServlet extends HttpServlet{
 			}
 			catch(Exception e)
 			{
-				System.out.println("EXCEPTION BEING THROWN");
-				e.printStackTrace();
+				
 			}
 		}
 		else
