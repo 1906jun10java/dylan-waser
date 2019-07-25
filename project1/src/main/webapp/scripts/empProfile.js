@@ -82,6 +82,7 @@ function getRequests() {
 		let requestList = response.json();
 		return requestList;
 	}).then(function(requestList) {
+		console.log(requestList);
 		remTableGen(requestList);
 	})
 }
@@ -105,8 +106,13 @@ function remTableGen(data1) {
 	headerCell = row.insertCell(-1);
 	headerCell.innerHTML = "Status";
 
+	headerCell = row.insertCell(-1);
+	headerCell.innerHTML = "Photo";
+	
+	headerCell = row.insertCell(-1);
+	headerCell.innerHTML = "Unresolved?";
 	// Add the data rows.
-	for (let i = 1; i < data1.length; i++) {
+	for (let i = 0; i < data1.length; i++) {
 		row = table.insertRow(-1);
 
 		let cell = row.insertCell(-1);
@@ -114,9 +120,17 @@ function remTableGen(data1) {
 
 		cell = row.insertCell(-1);
 		cell.innerHTML = data1[i].reason;
+		
+		cell = row.insertCell(-1);
+		cell.innerHTML = data1[i].status;
+		
+		cell = row.insertCell(-1);
+		cell.innerHTML = data1[i].photo;
 
 		cell = row.insertCell(-1);
 		cell.innerHTML = data1[i].resolved;
+		
+		
 	}
 
 	// replace the empty div with a table

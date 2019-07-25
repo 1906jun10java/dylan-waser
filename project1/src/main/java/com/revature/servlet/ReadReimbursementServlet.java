@@ -27,8 +27,8 @@ public class ReadReimbursementServlet extends HttpServlet{
 		if(session != null && session.getAttribute("employeeID") != null)
 		{
 			try {
-				int employeeID = Integer.parseInt(session.getAttribute("employeeID").toString());
-				ArrayList<Reimbursement> empReimbursementList = rdi.readReimbursementByEmpID(employeeID);
+				int empId = (int) session.getAttribute("employeeID");
+				ArrayList<Reimbursement> empReimbursementList = rdi.readReimbursementByEmpID(empId);
 				resp.getWriter().write((new ObjectMapper()).writeValueAsString(empReimbursementList));
 			}
 			catch(Exception e)
