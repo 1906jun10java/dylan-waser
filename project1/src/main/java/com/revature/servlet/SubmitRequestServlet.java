@@ -9,18 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import com.revature.daoimpl.ReimbursementDAOImpl;
 
 /**
  * Servlet implementation class SubmitRequest
  */
+@WebServlet("/submitRequestServlet")
 public class SubmitRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	HttpSession session = null;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session = request.getSession(false);
 		
@@ -32,9 +32,7 @@ public class SubmitRequestServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("IVE HIT THE SUBMITREQUESTSERVLET");
 		session = request.getSession(false);

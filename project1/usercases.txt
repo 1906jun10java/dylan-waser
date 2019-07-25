@@ -1,13 +1,13 @@
 EMPLOYEE USER CASES
--An Employee can login - Login.html
+-An Employee can login - Login.html - DONE
 -An Employee can view the Employee Homepage - index.html - employeeIndex.html?
--An Employee can logout - option on index.html(sends back to Login.html)
--An Employee can submit a reimbursement request - option on index.html to create a reimbursement
--An Employee can upload an image of his/her receipt as part of the reimbursement request - atleast accept a string
+-An Employee can logout - option on index.html(sends back to Login.html) - DONE
+-An Employee can submit a reimbursement request - option on index.html to create a reimbursement - DONE
+-An Employee can upload an image of his/her receipt as part of the reimbursement request - atleast accept a string - DONE
 -An Employee can view their pending reimbursement requests - readAll reimbursements
 -An Employee can view their resolved reimbursement requests - readAll reimbursements that have been resolved
--An Employee can view their information - view their profile
--An Employee can update their information - update their information page
+-An Employee can view their information - view their profile - DONE
+-An Employee can update their information - update their information page - DONE
 -An Employee receives an email when one of their reimbursement requests is resolved (optional)
 
 Note! Every Employee has a Manager. 

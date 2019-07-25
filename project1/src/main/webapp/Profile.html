@@ -38,7 +38,7 @@
 				currently logged in user -->
 			<div>	
 		        <h4>Make a reimbursement request</h4>
-		        <form action="submitRequest" method="POST">
+		        <form action="submitRequestServlet" method="POST">
 		        	<br>
 		        	<label>Enter dollar amount: $</label>
 		            <input name ="amount" type="number" min="0.01" step="0.01"><br><br>
@@ -56,16 +56,19 @@
 	        
 	        <div>
 	        	<h4>Update your user profile</h4>
-		        <form action="updateInfo" method="GET">
+		        <form action="updateProfile" method="POST">
 		        	<br>
 		        	<label>Username:</label>
-		        	<input name="username" type="text"><br><br>
+		        	<input name="newUsername" type="text"><br><br>
 		        	
-		        	<label>Password:</label>
-		        	<input name="password" type="password"><br><br>
+		        	<label>First name:</label>
+		        	<input name="newFirstName" type="text"><br><br>
+		        	
+		        	<label>Last name:</label>
+		        	<input name="newLastName" type ="text"><br><br>
 		        	
 		        	<label>Email:</label>
-		        	<input name="email" type ="text"><br><br>
+		        	<input name="newEmail" type="text"><br><br>
 		        	<button type="submit" value="update info">Submit</button>
 		        </form>
 		        <br>

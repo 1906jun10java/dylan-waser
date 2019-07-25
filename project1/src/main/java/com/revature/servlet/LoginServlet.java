@@ -3,7 +3,6 @@ package com.revature.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +17,7 @@ public class LoginServlet extends HttpServlet {
 	/*
 	 * doGet: this method will handle all GET requests made to this servlet
 	 */
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//write a message to the response body with PrintWriter
 		//resp.getWriter().write("hello from Login Servlet!");
@@ -50,6 +50,7 @@ public class LoginServlet extends HttpServlet {
 			
 			//resp.getWriter().write("welcome, "+u.getFirstname()+ " " +u.getLastname());
 			//redirect user to their profile page if authenticated
+			//add logic here to check if they are a manager or not
 			resp.sendRedirect("profile");
 			
 		} else {

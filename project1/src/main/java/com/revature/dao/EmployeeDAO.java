@@ -10,8 +10,7 @@ public interface EmployeeDAO {
 	public abstract void createEmployee(String firstName, String lastName, String email, String username, String passw0rd, int managerID) throws SQLException;
 	
 	public abstract List<Employee> readAllEmployees() throws SQLException;
-	
-	public abstract Employee readEmployee(String username, String password) throws SQLException;
+	public abstract Employee readEmployee(int id) throws SQLException;
 	
 	public abstract void updateEmployee(Employee e) throws SQLException;
 	

@@ -1,8 +1,5 @@
 package com.revature.driver;
 
-import java.sql.SQLException;
-
-import com.revature.beans.Employee;
 import com.revature.daoimpl.EmployeeDAOImpl;
 import com.revature.daoimpl.ReimbursementDAOImpl;
 

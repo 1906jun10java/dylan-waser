@@ -8,16 +8,21 @@ window.onload = function() {
 
 //displays currently logged in users to a <h1 id="welcomeEmp"> tag
 function populateEmp() {
-	fetch("http://localhost:8081/project1/session").then(
-			function(response) {
-				let data = response.json();
-				return data;
-			}).then(
-			function(data) {
-				document.getElementById("welcomeEmp").innerText = "Welcome "
-						+ data.firstName + " " + data.lastName;
-				return data;
-			})
+	//send a GET request to SessionServlet to obtain session information
+	fetch("http://localhost:8081/project1/session").then(function(response) {
+		return response.json(); //parse the response in json format to javascript object
+	}).then(function(data) {
+		console.log(data);
+		//check whether there is a vlaid session
+		//define behavior for whne there is no valid user
+		if(data.session === null){
+			window.location = "http://localhost:8081/project1/login"
+		} else{
+			//define behavior for when a user is returned
+			employee = data;
+			document.getElementById("welcomeEmp").innerText = "Welcome Employee " + employee.firstName + " " + employee.lastName;
+		}
+	})
 }
 
 //makes a table that displays users information

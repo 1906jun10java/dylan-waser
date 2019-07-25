@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-
 import com.revature.beans.Employee;
 import com.revature.dao.EmployeeDAO;
 import com.revature.util.ConnFactory;
@@ -17,6 +15,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
+	@Override
 	public void createEmployee(String FIRSTNAME, String LASTNAME, String EMAIL, String USERNAME,
 			String PASSW0RD, int MANAGERID) throws SQLException {
 		Connection conn = cf.getConnection();
@@ -38,6 +37,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		}
 	}
 
+	@Override
 	public ArrayList<Employee> readAllEmployees() throws SQLException {
 		ArrayList<Employee> empList = new ArrayList<Employee>();
 		Connection conn = cf.getConnection();
@@ -58,23 +58,41 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		return empList;
 	}
 
-	public Employee readEmployee(String username, String password) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public Employee readEmployee(int id) throws SQLException {
+		Connection conn = cf.getConnection();			
+		String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEEID = ? ";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		ResultSet rs = ps.executeQuery();
+		Employee e = null;
+		while(rs.next())
+		{
+			e = new Employee(rs.getInt(1), //empid
+							rs.getString(2), //firstname
+							rs.getString(3), //lastname
+							rs.getString(4), //email
+							rs.getString(5), //username
+							rs.getString(6), //password
+							rs.getInt(7));
+		}
+		return e;
 	}
 
+	@Override
 	public void updateEmployee(Employee e) throws SQLException {
 		Connection conn = cf.getConnection();
-		String sql = "{ call UPDATEEMP(?, ?, ?, ?, ?, ?_";
-		CallableStatement call = conn.prepareCall(sql);
-		call.setString(1, e.getFirstName());
-		call.setString(2, e.getLastName());
-		call.setString(3, e.getEmail());
-		call.setString(4, e.getUsername());
-		call.setString(5, e.getPassw0rd());
-		call.execute();
+		String sql = "UPDATE EMPLOYEE SET USERNAME = ?, FIRSTNAME = ?, LASTNAME = ?, EMAIL = ? WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareCall(sql);
+		ps.setString(1, e.getUsername());
+		ps.setString(2, e.getFirstName());
+		ps.setString(3, e.getLastName());
+		ps.setString(4, e.getEmail());
+		ps.setInt(5, e.getEmployeeID());
+		ps.execute();
 	}
 
+	@Override
 	public void deleteEmployee(Employee e) throws SQLException {
 		Connection conn = cf.getConnection();
 		String sql = "DELETE FROM EMPLOYEE WHERE EMPLOYEEID = ?";

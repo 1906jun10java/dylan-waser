@@ -28,14 +28,13 @@ public class SessionServlet extends HttpServlet{
 				String lastname = session.getAttribute("lastname").toString();
 				String email = session.getAttribute("email").toString();
 				String username = session.getAttribute("username").toString();
-				String password = session.getAttribute("passw0rd").toString();
 				int managerID = Integer.parseInt(session.getAttribute("managerID").toString());
-				Employee e = new Employee(employeeID, firstname, lastname, email, username, password, managerID);
+				Employee e = new Employee(employeeID, firstname, lastname, email, username, null, managerID);
 				resp.getWriter().write((new ObjectMapper()).writeValueAsString(e));
 			}
 			catch(Exception e)
 			{
-				
+				e.printStackTrace();
 			}
 		}
 		else

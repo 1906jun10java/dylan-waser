@@ -16,6 +16,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
+	@Override
 	public boolean createReimbursement(int EMPLOYEEID, double AMOUNT, String REASON, String PHOTO, int RESOLVED)
 			throws SQLException {
 		Connection conn = cf.getConnection();
@@ -37,6 +38,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 		return false; //not created		
 	}
 
+	@Override
 	public ArrayList<Reimbursement> readAllReimbursement() throws SQLException {
 		ArrayList<Reimbursement> reimList = new ArrayList<Reimbursement>();
 		Connection conn = cf.getConnection();
@@ -55,6 +57,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 		return reimList;
 	}
 
+	@Override
 	public Reimbursement readReimbursement(Reimbursement r) throws SQLException {
 		
 		return null;
@@ -80,6 +83,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 		return reimListOfEmp;
 	}
 
+	@Override
 	public void updateReimbursement(Reimbursement r) throws SQLException {
 		Connection conn = cf.getConnection();
 		String sql = "{ call UPDATEREIM(?, ?, ?, ?, ?, ?";
@@ -93,6 +97,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 		
 	}
 
+	@Override
 	public void deleteReimbursement(Reimbursement r) throws SQLException {
 		Connection conn = cf.getConnection();
 		String sql = "DELETE FROM REIMBURSEMENT WHERE REIMBURESEMENTID = ?";
