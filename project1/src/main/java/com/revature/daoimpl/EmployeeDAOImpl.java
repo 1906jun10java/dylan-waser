@@ -57,6 +57,29 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		}
 		return empList;
 	}
+	
+	@Override
+	public ArrayList<Employee> readAllEmpoyeesByManagerID(int id) throws SQLException {
+		ArrayList<Employee> empListByManageID = new ArrayList<Employee>();
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM EMPLOYEE WHERE MANAGERID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		ResultSet rs = ps.executeQuery();
+		Employee e = null;
+		while(rs.next())
+		{
+			e = new Employee(rs.getInt(1),
+					rs.getString(2),
+					rs.getString(3),
+					rs.getString(4),
+					rs.getString(5),
+					rs.getString(6),
+					rs.getInt(7));
+			empListByManageID.add(e);
+		}
+		return empListByManageID;
+	}
 
 	@Override
 	public Employee readEmployee(int id) throws SQLException {

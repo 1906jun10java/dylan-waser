@@ -4,6 +4,12 @@ window.onload = function() {
 	populateEmp();
 	document.getElementById('readEmpBut').addEventListener('click', createEmpTable);
 	document.getElementById('empRequestsBut').addEventListener('click', getRequests);
+	document.getElementById('empByManageIDBut').addEventListener('click', empByManageIDBut);
+	document.getElementById('viewAllEmployees').addEventListener('click', viewAllEmployees);
+}
+
+function viewAllEmployees() {
+	window.location.href="http://localhost:8081/project1/readAllEmps.html";
 }
 
 //displays currently logged in users to a <h1 id="welcomeEmp"> tag
@@ -20,7 +26,7 @@ function populateEmp() {
 		} else{
 			//define behavior for when a user is returned
 			employee = data;
-			document.getElementById("welcomeEmp").innerText = "Welcome Employee " + employee.firstName + " " + employee.lastName;
+			document.getElementById("welcomeEmp").innerText = "Welcome Manager " + employee.firstName + " " + employee.lastName;
 		}
 	})
 }
@@ -131,4 +137,9 @@ function remTableGen(data1) {
 	let newTable = document.getElementById("empRequests");
 	newTable.innerHTML = "";
 	newTable.appendChild(table);
+}
+
+//button to go the empListByManageID
+function empByManageIDBut() {
+	window.location.href="http://localhost:8081/project1/empByManagID.html";
 }

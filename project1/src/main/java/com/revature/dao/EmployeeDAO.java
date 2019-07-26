@@ -1,6 +1,7 @@
 package com.revature.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.beans.Employee;
@@ -15,4 +16,6 @@ public interface EmployeeDAO {
 	public abstract void updateEmployee(Employee e) throws SQLException;
 	
 	public abstract void deleteEmployee(Employee e) throws SQLException;
+
+	ArrayList<Employee> readAllEmpoyeesByManagerID(int id) throws SQLException;
 }

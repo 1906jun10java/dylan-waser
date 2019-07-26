@@ -5,12 +5,14 @@
 	text-align: center;
 	padding: 5rem;
 	margin: 5rem;
+	table-align: center;
 }
 
 div {
 	border:1px solid black;
 }
 
-table {
-	text-align: center;
+th, td {
+  padding: 5px;
+  text-align: center;
 }
