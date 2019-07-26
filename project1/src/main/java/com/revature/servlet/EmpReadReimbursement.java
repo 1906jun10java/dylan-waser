@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Reimbursement;
 import com.revature.daoimpl.ReimbursementDAOImpl;
 
-@WebServlet("/empReimbursements")
+@WebServlet("/empReadReimbursements")
 public class EmpReadReimbursement extends HttpServlet{
 
 	ObjectMapper mapper = new ObjectMapper();
@@ -23,7 +23,7 @@ public class EmpReadReimbursement extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
-		String empIDRaw = req.getParameter("id");
+		String empIDRaw = req.getReader().readLine();
 		int empID = Integer.parseInt(empIDRaw);
 		ArrayList<Reimbursement> empReimList = null;
 		try {

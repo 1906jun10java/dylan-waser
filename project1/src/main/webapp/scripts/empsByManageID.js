@@ -79,5 +79,6 @@ function getListOfEmps() {
 }
 
 function viewReimbursementButtonValue(id) {
-	window.location.replace("/project1/empReimbursements?id=" + id);
+	//window.location.href="http://localhost:8081/project1/empReimbursements?id=" + id;
+	window.location.href="http://localhost:8081/project1/empReimbursements.html?id=" + id; 
 }

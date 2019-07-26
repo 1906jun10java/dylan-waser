@@ -6,7 +6,7 @@ window.onload = function() {
 }
 
 function getEmpReimbursements() {
-	fetch("http://localhost:8081/project1/empReimbursements").then(function(response) {
+	fetch("http://localhost:8081/project1/empReadReimbursements").then(function(response) {
 		let requestList = response.json();
 		return requestList;
 	}).then(function(requestList) {
@@ -19,7 +19,7 @@ function remTableGen(data) {
 	// Create a HTML Table element.
 	let table = document.createElement("TABLE");
 	table.border = "1";
-
+	console.log("Created table element");
 	// Add the header row.
 	let row = table.insertRow(-1);
 	let headerCell = document.createElement("TH");
