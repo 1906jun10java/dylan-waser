@@ -4,7 +4,6 @@
 window.onload = function() {
 	getListOfEmps();
 	document.getElementById("empManageIDGoBackBut").addEventListener('click', goBack);
-	
 }
 
 function goBack() {
@@ -66,7 +65,10 @@ function getListOfEmps() {
 			
 			cell = row.insertCell(-1);
 			cell.innerHTML = `<button class="btn btn-warning" type="button" id="viewEmpRequests" value="${data[i].employeeID}">View Reimbursement</button>`
-			cell.addEventListener('click', viewReimbursementButtonValue);
+			cell.addEventListener('click', function(e) {
+				e.preventDefault();
+				viewReimbursementButtonValue(data[i].employeeID);
+			});
 		}
 
 		// replace the empty div with a table
@@ -76,6 +78,6 @@ function getListOfEmps() {
 	})
 }
 
-function viewReimbursementButtonValue(cell) {
-	console.log(cell);
+function viewReimbursementButtonValue(id) {
+	window.location.replace("/project1/empReimbursements?id=" + id);
 }
